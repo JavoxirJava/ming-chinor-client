@@ -3,7 +3,7 @@ import { useChatId } from "./useChatId";
 
 export function useIsAdmin(): boolean {
     const chatId = useChatId();
-    let chatIdSet = new Set<string>();
+    const chatIdSet = new Set<string>();
     chatIdSet.add("1085241246");
     chatIdSet.add("345906815");
     chatIdSet.add("802511752");
