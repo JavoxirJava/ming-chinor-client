@@ -146,20 +146,17 @@ export default function BasketPage() {
     useEffect(() => {
         const loadData = async () => {
             setLoadingAll(true);
-            if (userId) {
+            if (userId !== null) {
                 const count = await fetchBasket();
-                if (count === 0) {
-                    await fetchOrders();
-                }
+                if (count === 0) await fetchOrders();
             }
             setLoadingAll(false);
         };
         loadData();
     }, [userId]);
+    
     useEffect(() => {
-        if (userId) {
-            fetchOrders();
-        }
+        if (userId !== null) fetchOrders();
     }, [userId, fetchOrders]);
 
     useEffect(() => {
