@@ -24,6 +24,10 @@ export function TabNavigation() {
     useEffect(() => {
         const fetchCartCount = async () => {
             try {
+                if (userId === null) {
+                    setCartCount(0);
+                    return;
+                }
                 const res = await axios.get(`${BASE_URL}${APP_API.basket}/${userId}`);
                 setCartCount(res.data.products.length);
             } catch {

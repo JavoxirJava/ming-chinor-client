@@ -25,13 +25,13 @@ export default function CategoryFilter({onSelectCategory}: Props) {
     useEffect(() => {
         axios
             .get(`${BASE_URL}${APP_API.category}`)
-            .then((res) => {
+            .then(res => {
                 const allCategory: Category = {
                     _id: 'all',
                     name: 'Hammasi',
                     image: 'https://andstat.uz/images/000000000000000000fdgdfg.jpg',
                 };
-                setCategories([allCategory, ...res.data]);
+                setCategories([allCategory, ...res.data.data]);
             })
             .catch((err) => console.error(err));
     }, []);

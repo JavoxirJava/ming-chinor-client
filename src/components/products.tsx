@@ -91,7 +91,7 @@ export default function Products({query, categoryId, userId}: Props) {
         fetchProducts();
     }, [query, categoryId, fetchProducts]);
 
-    const displayProducts = products.slice(0, visibleCount);
+    const displayProducts = products.length > 0 && products.slice(0, visibleCount);
 
     const productSkeletons = Array(6).fill(null).map((_, index) => (
         <div
@@ -123,7 +123,7 @@ export default function Products({query, categoryId, userId}: Props) {
                 <div className="grid grid-cols-2 gap-3 mt-6">{productSkeletons}</div>
             }>
                 <div className="grid grid-cols-2 gap-3 mt-6">
-                    {displayProducts.map((product) => (
+                    {Array.isArray(displayProducts) &&  displayProducts.length > 0 && displayProducts.map((product) => (
                         <div
                             key={product._id}
                             onClick={() => handleProductClick(product._id)}
